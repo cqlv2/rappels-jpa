@@ -101,9 +101,7 @@ public class Main implements CommandLineRunner {
 	}
 
 	
-	public  static Film extractFilm() {
-		filmRepo=new FilmRe
-	}
+
 	
 	
 }
