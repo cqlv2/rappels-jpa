@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class Acteur {
 	private String prenom;
 	@ManyToMany
 	@JoinTable(name = "film_acteur", joinColumns = @JoinColumn(name = "id_acteur"), inverseJoinColumns = @JoinColumn(name = "id_film"))
-	private List<Film> films;
+	private List<Film> films=new ArrayList<Film>();
 
 	public Integer getId() {
 		return id;
