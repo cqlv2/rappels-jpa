@@ -93,11 +93,17 @@ public class Main implements CommandLineRunner {
 		// remove cat
 		
 		
-		Categorie c1 = em.find(Categorie.class, 10);
-		Categorie c2 = em.find(Categorie.class, 13);
-			em.remove(c1);
-			em.remove(c2);
+//		Categorie c1 = em.find(Categorie.class, 10);
+//		Categorie c2 = em.find(Categorie.class, 13);
+//			em.remove(c1);
+//			em.remove(c2);
 		
 	}
 
+	
+	public  static Film extractFilm() {
+		filmRepo=new FilmRe
+	}
+	
+	
 }
