@@ -18,7 +18,7 @@ public class Film {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String titre;
-	private short annee_sortie;
+	private int annee_sortie;
 	@ManyToOne
 	@JoinColumn(name = "id_categ")
 	private Categorie catégorie;
@@ -42,12 +42,12 @@ public class Film {
 		this.titre = titre;
 	}
 
-	public short getAnneeSortie() {
+	public int getAnneeSortie() {
 		return annee_sortie;
 	}
 
-	public void setAnneeSortie(short anneeSortie) {
-		this.annee_sortie = anneeSortie;
+	public void setAnneeSortie(int i) {
+		this.annee_sortie = i;
 	}
 
 	public Categorie getCatégorie() {

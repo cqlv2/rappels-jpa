@@ -40,20 +40,29 @@ public class Main implements CommandLineRunner {
 		
 		//ajout acteur 
 
+//		EntityTransaction et = em.getTransaction();
+//		et.begin();
+//		
+//		Acteur sp=new Acteur();
+//		sp.setNom("Pegs");
+//		sp.setPrénom("Simon");
+//		TypedQuery<Film> query2 = em.createQuery("select f from Film f where f.titre = 'Mission impossible: Fallout'",
+//				Film.class);
+//		Film f = query2.getResultList().get(0);
+//		sp.getFilms().add(f);
+//	
+//		em.persist(sp);
+//		et.commit();
+		
+		//Modifiez la date de sortie du film « Avengers : Endgame » qui est 2019 et non 2018
 		EntityTransaction et = em.getTransaction();
 		et.begin();
-		
-		Acteur sp=new Acteur();
-		sp.setNom("Pegs");
-		sp.setPrénom("Simon");
-		TypedQuery<Film> query2 = em.createQuery("select f from Film f where f.titre = 'Mission impossible: Fallout'",
+		TypedQuery<Film> query = em.createQuery("select f from Film f where f.titre = 'Avengers: Endgame'",
 				Film.class);
-		Film f = query2.getResultList().get(0);
-		sp.getFilms().add(f);
-	
-		em.persist(sp);
+		Film f = query.getResultList().get(0);
+		System.out.println(f.getTitre());
+		f.setAnneeSortie(2019);
 		et.commit();
-		
 		
 		
 		
