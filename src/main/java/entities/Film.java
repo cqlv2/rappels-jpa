@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Film {
@@ -27,6 +28,22 @@ public class Film {
 	@JoinTable(name = "film_acteur", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_acteur"))
 	private List<Acteur> acteurs = new ArrayList<Acteur>();
 
+	@ManyToMany
+	@JoinTable(name = "film_producteur", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_producteur"))
+	private List<Producteur> producteurs = new ArrayList<Producteur>();
+	
+	@ManyToMany
+	@JoinTable(name = "film_realisateur", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_realisateur"))
+	private List<Realisateur> realisateurs = new ArrayList<Realisateur>();
+	
+	@ManyToOne
+	private Tache taches;
+	
+	
+	
+	
+	
+	
 	public Integer getId() {
 		return id;
 	}

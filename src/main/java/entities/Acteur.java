@@ -4,47 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Acteur {
+public class Acteur extends Intervenant {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private String nom;
-	private String prenom;
+	private String agence;
+	private float salaire;
 	@ManyToMany
 	@JoinTable(name = "film_acteur", joinColumns = @JoinColumn(name = "id_acteur"), inverseJoinColumns = @JoinColumn(name = "id_film"))
-	private List<Film> films=new ArrayList<Film>();
+	private List<Film> films = new ArrayList<Film>();
 
-	public Integer getId() {
-		return id;
+	public String getAgence() {
+		return agence;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setAgence(String agence) {
+		this.agence = agence;
 	}
 
-	public String getNom() {
-		return nom;
+	public float getSalaire() {
+		return salaire;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public void setSalaire(float salaire) {
+		this.salaire = salaire;
 	}
 
 	public List<Film> getFilms() {
