@@ -39,12 +39,12 @@ public class Acteur {
 		this.nom = nom;
 	}
 
-	public String getPrénom() {
+	public String getPrenom() {
 		return prenom;
 	}
 
-	public void setPrénom(String prénom) {
-		this.prenom = prénom;
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
 	public List<Film> getFilms() {

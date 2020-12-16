@@ -1,6 +1,7 @@
 package tp1;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,6 +16,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import entities.Acteur;
+import entities.Categorie;
 import entities.Film;
 
 
@@ -55,15 +57,34 @@ public class Main implements CommandLineRunner {
 //		et.commit();
 		
 		//Modifiez la date de sortie du film « Avengers : Endgame » qui est 2019 et non 2018
+//		EntityTransaction et = em.getTransaction();
+//		et.begin();
+//		TypedQuery<Film> query = em.createQuery("select f from Film f where f.titre = 'Avengers: Endgame'",
+//				Film.class);
+//		Film f = query.getResultList().get(0);
+//		System.out.println(f.getTitre());
+//		f.setAnneeSortie(2019);
+//		et.commit();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
-		TypedQuery<Film> query = em.createQuery("select f from Film f where f.titre = 'Avengers: Endgame'",
-				Film.class);
-		Film f = query.getResultList().get(0);
-		System.out.println(f.getTitre());
-		f.setAnneeSortie(2019);
-		et.commit();
+		Film f=new Film();
+		f.setTitre("monFilm");
+		f.setAnneeSortie(2000);
 		
+		f.setCatégorie(em.find(Categorie.class, 1));
+		
+		Acteur monActeur=new Acteur();
+		monActeur.setNom("mon");
+		monActeur.setPrenom("acteur");
+		monActeur.setFilms(new ArrayList<Film>());
+		em.persist(monActeur);
+		
+		f.getActeurs().add(em.find(Acteur.class, 1));
+		f.getActeurs().add(em.find(Acteur.class, 2));
+		f.getActeurs().add(monActeur);
+		
+		em.persist(f);
+		et.commit();
 		
 		
 	}
