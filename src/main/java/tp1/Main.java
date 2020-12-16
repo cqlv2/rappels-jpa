@@ -65,27 +65,38 @@ public class Main implements CommandLineRunner {
 //		System.out.println(f.getTitre());
 //		f.setAnneeSortie(2019);
 //		et.commit();
-		EntityTransaction et = em.getTransaction();
-		et.begin();
-		Film f=new Film();
-		f.setTitre("monFilm");
-		f.setAnneeSortie(2000);
 		
-		f.setCatégorie(em.find(Categorie.class, 1));
+		//ajout film+acteurs
 		
-		Acteur monActeur=new Acteur();
-		monActeur.setNom("mon");
-		monActeur.setPrenom("acteur");
-		monActeur.setFilms(new ArrayList<Film>());
-		em.persist(monActeur);
+//		EntityTransaction et = em.getTransaction();
+//		et.begin();
+//		Film f=new Film();
+//		f.setTitre("monFilm");
+//		f.setAnneeSortie(2000);
+//		
+//		f.setCatégorie(em.find(Categorie.class, 1));
+//		
+//		Acteur monActeur=new Acteur();
+//		monActeur.setNom("mon");
+//		monActeur.setPrenom("acteur");
+//		monActeur.setFilms(new ArrayList<Film>());
+//		em.persist(monActeur);
+//		
+//		f.getActeurs().add(em.find(Acteur.class, 1));
+//		f.getActeurs().add(em.find(Acteur.class, 2));
+//		f.getActeurs().add(monActeur);
+//		
+//		em.persist(f);
+//		et.commit();
 		
-		f.getActeurs().add(em.find(Acteur.class, 1));
-		f.getActeurs().add(em.find(Acteur.class, 2));
-		f.getActeurs().add(monActeur);
 		
-		em.persist(f);
-		et.commit();
+		// remove cat
 		
+		
+		Categorie c1 = em.find(Categorie.class, 10);
+		Categorie c2 = em.find(Categorie.class, 13);
+			em.remove(c1);
+			em.remove(c2);
 		
 	}
 
